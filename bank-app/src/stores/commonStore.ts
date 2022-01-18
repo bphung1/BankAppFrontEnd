@@ -5,7 +5,7 @@ export default class CommonStore {
     token: string | null = null;
 
     constructor() {
-        makeObservable(this);
+        // makeObservable(this);
 
         reaction(
             () => this.token,
