@@ -1,7 +1,7 @@
 import axios from "axios";
 import { User } from "../models/user";
 
-const API_URL = "http://localhost:8080/api/";
+const API_URL = "https://team-hthb-bank-app-api.herokuapp.com/api/";
 
 class AuthService {
   login(username:string,password:string):Promise<User>{
