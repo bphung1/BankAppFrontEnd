@@ -46,26 +46,8 @@ export default class Login extends Component<Props, State> {
       loading: true
     });
 
-
-    AuthService.login(username, password).then(
-      () => {
-        this.props.history.push("/profile");
-        window.location.reload();
-      },
-      error => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        this.setState({
-          loading: false,
-          message: resMessage
-        });
-      }
-    );
+    AuthService.login(username, password);
+    let user = AuthService.getUser(username);
   }
 
   render() {
