@@ -13,10 +13,11 @@ class AuthService {
       })
       .then(response=>{
           if(response.data.token){
+            console.log(response.data);
             localStorage.setItem("token",JSON.stringify(response.data));
-            // user= axios.post(API_URL+"getUser",{
-            //   username
-            // })
+            user= axios.post(API_URL+"getUser",{
+              username
+            })
           }
       }).catch(error => {
         console.error(error.error);
