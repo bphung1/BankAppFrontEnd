@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import service from "../api/service";
 import { Button, Segment } from "semantic-ui-react";
+import { User } from "../models/user";
 
 
 interface RouterProps {
@@ -52,7 +53,32 @@ export default class CreateUser extends Component<Props, State> {
         });
     }
 
-    createUser(formValue: { email: string; password: string }) {
+    createUser(formValue: { firstName: string; lastName: string; email: string; phoneNumber: string; address: string; password: string }) {
+        const {
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            address,
+            password
+        } = formValue;
+
+        let newUser: User = {
+            userid: 0,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phoneNumber: phoneNumber,
+            address: address,
+            password: password
+        }
+
+        this.setState({
+            message: "",
+            loading: true
+        })
+
+        service.register(newUser);
     }
 
     render() {
