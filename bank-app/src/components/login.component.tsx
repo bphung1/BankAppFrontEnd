@@ -3,7 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import service from "../api/service";
-import { Button } from "semantic-ui-react";
+import { Button, Segment } from "semantic-ui-react";
 
 
 interface RouterProps {
@@ -65,13 +65,13 @@ export default class Login extends Component<Props, State> {
     };
 
     return (
-      <div className="col-md-12">
-        <div className="card card-container">
-          <img
+      <Segment className="col-md-12">
+        <Segment className="card card-container">
+          {/* <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
             className="profile-img-card"
-          />
+          /> */}
 
           <Formik
             initialValues={initialValues}
@@ -79,47 +79,48 @@ export default class Login extends Component<Props, State> {
             onSubmit={this.handleLogin}
           >
             <Form>
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <Field name="username" type="text" className="form-control" />
+              <Segment className="form-group">
+                <Field name="username" type="text" className="form-control" placeholder='Username' />
                 <ErrorMessage
                   name="username"
                   component="div"
                   className="alert alert-danger"
                 />
-              </div>
+              </Segment>
 
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <Field name="password" type="password" className="form-control" />
+              <Segment className="form-group">
+                <Field name="password" type="password" className="form-control" placeholder='Password' />
                 <ErrorMessage
                   name="password"
                   component="div"
                   className="alert alert-danger"
                 />
-              </div>
+              </Segment>
 
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+              <Segment className="form-group">
+                <Button type="submit" className="btn btn-primary btn-block" disabled={loading}>
                   {loading && (
                     <span className="spinner-border spinner-border-sm"></span>
                   )}
                   <span>Login</span>
-                </button>
-              </div>
+                </Button>
+                <Button onClick={() => this.handleLogout()}>Logout</Button>
+              </Segment>
 
               {message && (
-                <div className="form-group">
-                  <div className="alert alert-danger" role="alert">
+                <Segment className="form-group">
+                  <Segment className="alert alert-danger" role="alert">
                     {message}
-                  </div>
-                </div>
+                  </Segment>
+                </Segment>
               )}
             </Form>
           </Formik>
-          <Button onClick={() => this.handleLogout()}>Logout</Button>
-        </div>
-      </div>
+          <Segment>
+            <Button>Create new account</Button>
+          </Segment>
+        </Segment>
+      </Segment>
     );
   }
 }

@@ -3,7 +3,10 @@ import { User } from "../models/user";
 
 const API_URL = "https://team-hthb-bank-app-api.herokuapp.com/api";
 
+let userFromAPI: User | null;
+
 class Service {
+
   login = async(username: string , password: string) => {
     await axios.post(API_URL + "/authenticate", {
       username,
@@ -29,7 +32,8 @@ class Service {
         }
       })
       .then(response => {
-        console.log(response.data);
+        userFromAPI = response.data;
+        // console.log(userFromAPI);
         return response.data;
       })
       .catch((error) => 
@@ -41,8 +45,13 @@ class Service {
     }
   }
 
+  getUserFromAPI(): User | null {
+    return userFromAPI;
+  }
+
   logout() {
     localStorage.removeItem("token");
+    userFromAPI = null;
   }
 
   register(firstName: string, lastName: string, email: string, phoneNumber: string, address: string, password: string) {

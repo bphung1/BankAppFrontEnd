@@ -1,12 +1,18 @@
-import React, { Component, Props } from 'react';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import '../App.css';
+import Login from '../components/login.component';
 
 class App extends React.Component{
 
   render(){
-      return <div>
-        <h1>Header</h1>
-      </div>
+      return (
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Login} />
+          </Switch>
+        </BrowserRouter>
+      )
   }
 
 }
