@@ -1,10 +1,9 @@
 import { Component } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, NavLink } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import service from "../api/service";
 import { Button, Segment } from "semantic-ui-react";
-
 
 interface RouterProps {
   history: string;
@@ -117,7 +116,11 @@ export default class Login extends Component<Props, State> {
             </Form>
           </Formik>
           <Segment>
-            <Button>Create new account</Button>
+            <Button 
+              as={NavLink}
+              to='/createuser'
+              content='Create a new account'
+            />
           </Segment>
         </Segment>
       </Segment>

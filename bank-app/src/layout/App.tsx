@@ -11,6 +11,7 @@ class App extends React.Component{
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/createuser" component={CreateUser} />
           </Switch>
         </BrowserRouter>

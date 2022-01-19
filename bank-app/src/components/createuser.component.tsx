@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, NavLink } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import service from "../api/service";
@@ -177,6 +177,11 @@ export default class CreateUser extends Component<Props, State> {
                             )}
                         </Form>
                     </Formik>
+                    <Button
+                        as={NavLink}
+                        to='/login'
+                        content='Back'
+                    />
                 </Segment>
             </Segment>
         )
