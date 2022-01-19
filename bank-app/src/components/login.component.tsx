@@ -3,6 +3,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import service from "../api/service";
+import { Button } from "semantic-ui-react";
 
 
 interface RouterProps {
@@ -46,12 +47,14 @@ export default class Login extends Component<Props, State> {
       loading: true
     });
 
+    service.login(username, password).then(() => {
+      service.getUser(username);
+    });
+  }
 
-    service.login(username, password);
-    if(localStorage.getItem("token")){
-    service.getUser(username);
-    }
-}
+  handleLogout() {
+    service.logout();
+  }
 
   render() {
     const { loading, message } = this.state;
@@ -114,6 +117,7 @@ export default class Login extends Component<Props, State> {
               )}
             </Form>
           </Formik>
+          <Button onClick={() => this.handleLogout()}>Logout</Button>
         </div>
       </div>
     );
