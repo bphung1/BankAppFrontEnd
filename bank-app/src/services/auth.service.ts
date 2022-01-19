@@ -5,7 +5,7 @@ const API_URL = "https://team-hthb-bank-app-api.herokuapp.com/api";
 
 
 class AuthService {
-  login(username:string,password:string){
+  login(username: string, password: string){
        axios.post(API_URL+"/authenticate",{
           username,
           password
