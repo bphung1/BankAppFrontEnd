@@ -13,7 +13,7 @@ interface RouterProps {
 type Props = RouteComponentProps<RouterProps>;
 
 type State = {
-  username: string,
+  email: string,
   password: string,
   loading: boolean,
   message: string
@@ -25,7 +25,7 @@ export default class Login extends Component<Props, State> {
     this.handleLogin = this.handleLogin.bind(this);
 
     this.state = {
-      username: "",
+      email: "",
       password: "",
       loading: false,
       message: ""
@@ -34,21 +34,21 @@ export default class Login extends Component<Props, State> {
 
   validationSchema() {
     return Yup.object().shape({
-      username: Yup.string().required("This field is required!"),
+      email: Yup.string().required("This field is required!"),
       password: Yup.string().required("This field is required!"),
     });
   }
 
-  handleLogin(formValue: { username: string; password: string }) {
-    const { username, password } = formValue;
+  handleLogin(formValue: { email: string; password: string }) {
+    const { email, password } = formValue;
 
     this.setState({
       message: "",
       loading: true
     });
 
-    service.login(username, password).then(() => {
-      service.getUser(username);
+    service.login(email, password).then(() => {
+      service.getUser(email);
     });
   }
 
@@ -60,7 +60,7 @@ export default class Login extends Component<Props, State> {
     const { loading, message } = this.state;
 
     const initialValues = {
-      username: "",
+      email: "",
       password: "",
     };
 
@@ -80,9 +80,9 @@ export default class Login extends Component<Props, State> {
           >
             <Form>
               <Segment className="form-group">
-                <Field name="username" type="text" className="form-control" placeholder='Username' />
+                <Field name="email" type="text" className="form-control" placeholder='email' />
                 <ErrorMessage
-                  name="username"
+                  name="email"
                   component="div"
                   className="alert alert-danger"
                 />

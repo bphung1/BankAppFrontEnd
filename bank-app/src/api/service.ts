@@ -54,8 +54,15 @@ class Service {
     userFromAPI = null;
   }
 
-  register(firstName: string, lastName: string, email: string, phoneNumber: string, address: string, password: string) {
-    return axios.post(API_URL + "/createUser", {
+  register(user: User) {
+    let firstName = user.firstName;
+    let lastName = user.lastName;
+    let email = user.email;
+    let phoneNumber = user.phoneNumber;
+    let address = user.address;
+    let password = user.password;
+
+    return axios.post<User>(API_URL + "/createUser", {
       firstName,
       lastName,
       email,
