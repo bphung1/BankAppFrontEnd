@@ -7,11 +7,7 @@ import App from './layout/App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={App} />
-    </Switch>
-  </BrowserRouter>,
+  <App />,
   document.getElementById('root')
 );
 
