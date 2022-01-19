@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import service from "../api/service";
 import { Button, Segment } from "semantic-ui-react";
 
-
 interface RouterProps {
   history: string;
 }
