@@ -2,8 +2,8 @@ import { Component } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import service from "../api/service";
 
-import AuthService from "../services/auth.service";
 
 interface RouterProps {
   history: string;
@@ -47,26 +47,11 @@ export default class Login extends Component<Props, State> {
     });
 
 
-    AuthService.login(username, password).then(
-      () => {
-        this.props.history.push("/profile");
-        window.location.reload();
-      },
-      error => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        this.setState({
-          loading: false,
-          message: resMessage
-        });
-      }
-    );
-  }
+    service.login(username, password);
+    if(localStorage.getItem("token")){
+    service.getUser(username);
+    }
+}
 
   render() {
     const { loading, message } = this.state;

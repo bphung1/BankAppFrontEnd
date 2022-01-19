@@ -1,39 +1,51 @@
 import axios from "axios";
-import { User } from "../models/user";
 
-const API_URL = "https://team-hthb-bank-app-api.herokuapp.com/api/";
+const API_URL = "https://team-hthb-bank-app-api.herokuapp.com/api";
 
-class AuthService {
-  login(username:string,password:string):Promise<User>{
-      let user:any;
+class Service {
+  login(username:string,password:string){
 
-       axios.post(API_URL+"authenticate",{
+       axios.post(API_URL+"/authenticate",{
           username,
           password
       })
       .then(response=>{
           if(response.data.token){
-            console.log(response.data);
             localStorage.setItem("token",JSON.stringify(response.data));
-            user= axios.post(API_URL+"getUser",{
-              username
-            })
           }
       }).catch(error => {
         console.error(error.error);
-        return undefined;
     });
 
-    localStorage.setItem("user",JSON.stringify(user));
-    return user;
   }  
+
+getUser(email:string){
+  const token= localStorage.getItem("token");
+  if(token){
+  const val=JSON.parse(token);
+  console.log("Bearer "+val.token);
+  
+  axios.post(API_URL+"/getUser",{email: email }, {
+    headers: {
+        'token': 'Bearer '+val.token,
+        'Content-Type': 'application/json',
+    }
+})
+.then(response => {
+    console.log(response.data);
+    return response.data;
+})
+.catch(
+  (error) => console.log( error.response ) );
+}
+}
 
   logout(){
       localStorage.removeItem("token");
   }
 
   register(firstName:string,lastName:string,email:string,phoneNumber:string,address:string,password:string){
-      return axios.post(API_URL+"createUser",{
+      return axios.post(API_URL+"/createUser",{
        firstName,
        lastName,
        email,
@@ -51,4 +63,4 @@ class AuthService {
  }
 }
 
-export default new AuthService();
+export default new Service();
