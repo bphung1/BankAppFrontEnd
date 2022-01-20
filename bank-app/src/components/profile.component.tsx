@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import service from "../api/service";
+import NavBar from "../layout/NavBar";
 import { User } from "../models/user";
 
 interface RouterProps {
@@ -32,6 +33,7 @@ export default class Profile extends Component<Props> {
     render(){
         return (
             <>
+                <NavBar />
                 <p>{this.user.firstName}</p>
             </>
         )

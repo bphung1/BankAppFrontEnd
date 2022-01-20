@@ -71,11 +71,6 @@ export default class Login extends Component<Props, State> {
     return (
       <Segment className="col-md-12">
         <Segment className="card card-container">
-          {/* <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          /> */}
 
           <Formik
             initialValues={initialValues}
@@ -109,7 +104,6 @@ export default class Login extends Component<Props, State> {
                     )}
                     <span>Login</span>
                   </Button>
-                  <Button onClick={() => this.handleLogout()}>Logout</Button>
                 </Segment>
 
                 {message && (

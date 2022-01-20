@@ -6,7 +6,6 @@ import service from "../api/service";
 import { Button, Segment } from "semantic-ui-react";
 import { User } from "../models/user";
 
-
 interface RouterProps {
   history: string;
 }
@@ -178,7 +177,7 @@ export default class CreateUser extends Component<Props, State> {
                     </Formik>
                     <Button
                         as={NavLink}
-                        to='/login'
+                        to='/'
                         content='Back'
                     />
                 </Segment>
