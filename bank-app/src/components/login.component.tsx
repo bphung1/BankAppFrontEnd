@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import service from "../api/service";
 import { Button, Segment } from "semantic-ui-react";
+import { history } from "..";
 
 interface RouterProps {
   history: string;
@@ -47,8 +48,10 @@ export default class Login extends Component<Props, State> {
     });
 
     service.login(email, password).then(() => {
-      service.getUser(email).then(() => {
-        
+      service.getUser(email).then((res) => {
+        if (res !== null) {
+          history.push('/profile')
+        }
       });
     });
   }
@@ -79,43 +82,45 @@ export default class Login extends Component<Props, State> {
             validationSchema={this.validationSchema}
             onSubmit={this.handleLogin}
           >
-            <Form>
-              <Segment className="form-group">
-                <Field name="email" type="text" className="form-control" placeholder='email' />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="alert alert-danger"
-                />
-              </Segment>
-
-              <Segment className="form-group">
-                <Field name="password" type="password" className="form-control" placeholder='Password' />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="alert alert-danger"
-                />
-              </Segment>
-
-              <Segment className="form-group">
-                <Button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-                  {loading && (
-                    <span className="spinner-border spinner-border-sm"></span>
-                  )}
-                  <span>Login</span>
-                </Button>
-                <Button onClick={() => this.handleLogout()}>Logout</Button>
-              </Segment>
-
-              {message && (
+            {({ handleSubmit, isSubmitting, errors }) => (
+              <Form onSubmit={handleSubmit} >
                 <Segment className="form-group">
-                  <Segment className="alert alert-danger" role="alert">
-                    {message}
-                  </Segment>
+                  <Field name="email" type="text" className="form-control" placeholder='email' />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="alert alert-danger"
+                  />
                 </Segment>
-              )}
-            </Form>
+
+                <Segment className="form-group">
+                  <Field name="password" type="password" className="form-control" placeholder='Password' />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="alert alert-danger"
+                  />
+                </Segment>
+
+                <Segment className="form-group">
+                  <Button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+                    {loading && (
+                      <span className="spinner-border spinner-border-sm"></span>
+                    )}
+                    <span>Login</span>
+                  </Button>
+                  <Button onClick={() => this.handleLogout()}>Logout</Button>
+                </Segment>
+
+                {message && (
+                  <Segment className="form-group">
+                    <Segment className="alert alert-danger" role="alert">
+                      {message}
+                    </Segment>
+                  </Segment>
+                )}
+              </Form>
+            )}
           </Formik>
           <Segment>
             <Button 

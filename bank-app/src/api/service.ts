@@ -3,7 +3,7 @@ import { User } from "../models/user";
 
 const API_URL = "https://team-hthb-bank-app-api.herokuapp.com/api";
 
-let userFromAPI: User | null;
+let userFromAPI: User | undefined;
 
 class Service {
 
@@ -45,13 +45,13 @@ class Service {
     }
   }
 
-  getUserFromAPI(): User | null {
+  getUserFromAPI(): User | undefined {
     return userFromAPI;
   }
 
   logout() {
     localStorage.removeItem("token");
-    userFromAPI = null;
+    userFromAPI = undefined;
   }
 
   register(user: User) {
