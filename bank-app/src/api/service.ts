@@ -19,7 +19,7 @@ class Service {
     });
   }  
 
-  getUser = async(email:string) => {
+  getUser = async(email: string | null) => {
     const token = localStorage.getItem("token");
     if (token) {
       const val = JSON.parse(token);
@@ -33,6 +33,7 @@ class Service {
       })
       .then(response => {
         userFromAPI = response.data;
+        localStorage.setItem('email', userFromAPI.email)
         // console.log(userFromAPI);
         return response.data;
       })
@@ -43,6 +44,10 @@ class Service {
         } 
       );
     }
+  }
+
+  setUserFromAPI(user: User ) {
+    userFromAPI = user;
   }
 
   getUserFromAPI(): User | undefined {

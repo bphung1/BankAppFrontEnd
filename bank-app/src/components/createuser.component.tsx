@@ -86,14 +86,13 @@ export default class CreateUser extends Component<Props, State> {
         const { loading, message } = this.state;
 
         const initialValues = {
-                
-                firstName: "",
-                lastName: "",
-                email: "",
-                phoneNumber: "",
-                address: "",
-                password: ""
-            };
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+            address: "",
+            password: ""
+        };
 
         return (
             <Segment className="col-md-12">

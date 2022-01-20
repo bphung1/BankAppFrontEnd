@@ -14,11 +14,13 @@ class App extends React.Component{
           <Route
             path={'/(.+)'}
             render={() => (
-              <Switch>
-                <Route path="/login" component={Login} />
-                <Route path="/createuser" component={CreateUser} />
-                <Route path="/profile" component={Profile} />
-              </Switch>
+              <>
+                <Switch>
+                  <Route path="/login" component={Login} />
+                  <Route path="/createuser" component={CreateUser} />
+                  <Route path="/profile" component={Profile} />
+                </Switch>
+              </>
             )}
           />
         </>
