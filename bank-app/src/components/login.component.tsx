@@ -47,7 +47,9 @@ export default class Login extends Component<Props, State> {
     });
 
     service.login(email, password).then(() => {
-      service.getUser(email);
+      service.getUser(email).then(() => {
+        
+      });
     });
   }
 
