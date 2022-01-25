@@ -102,11 +102,14 @@ export default class Login extends Component<Props, State> {
                 </Segment>
 
                 <Segment className="form-group" style={{ marginBottom: '-15px' }}>
-                  <Button type="submit" className="btn btn-primary btn-block" disabled={loading}>
+                  <Button animated type="submit" className="btn btn-primary btn-block" disabled={loading}>
                     {loading && (
                       <span className="spinner-border spinner-border-sm"></span>
                     )}
-                    <span>Login</span>
+                    <Button.Content visible>Login</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name='thumbs down' />
+                    </Button.Content>
                   </Button>
                 </Segment>
 
@@ -121,11 +124,15 @@ export default class Login extends Component<Props, State> {
             )}
           </Formik>
           <Segment>
-            <Button 
+            <Button animated
               as={NavLink}
               to='/createuser'
-              content='Create a new account'
-            />
+            >
+              <Button.Content visible>Create a new account</Button.Content>
+                <Button.Content hidden>
+                  <Icon name='eye' />
+                </Button.Content>
+            </Button>
           </Segment>
         </Segment>
       </>
