@@ -94,8 +94,8 @@ export default class CreateUser extends Component<Props, State> {
         };
 
         return (
-            <Segment className="col-md-12">
-                <Segment className="card card-container">
+            // <Segment className="col-md-12">
+                <Segment className="card card-container" style={{ marginLeft: '38%', marginTop: '-50px' }}>
                     <Formik
                         initialValues={initialValues}
                         validationSchema={this.validationSchema}
@@ -181,7 +181,7 @@ export default class CreateUser extends Component<Props, State> {
                         content='Back'
                     />
                 </Segment>
-            </Segment>
+            // </Segment>
         )
     }
 }

@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, Container, Menu } from "semantic-ui-react";
+import { Button, Container, Header, Icon, Menu, Segment } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import service from "../api/service";
+import CreateUser from "../components/createuser.component";
 
 export default function NavBar() {
     function hangleLogout() {
@@ -12,7 +13,7 @@ export default function NavBar() {
 
     return (
         <>
-            {user &&
+            {(user && 
                 <Menu inverted fixed="top">
                     <Container>
                         <Menu.Item as={NavLink} to='/profile' name="Profile">
@@ -37,7 +38,15 @@ export default function NavBar() {
                         </Menu.Item>
                     </Container>
                 </Menu>
-            }
+            )
+                || 
+                (
+                    <Header style={{ marginLeft: '42%', marginTop: '30px', marginBottom: '-150px' }} as='h2' icon>
+                        <Icon name='chess' />
+                        Create Account
+                    </Header>
+                )
+            } 
         </>
     );
 }
