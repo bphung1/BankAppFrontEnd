@@ -95,7 +95,7 @@ export default class CreateUser extends Component<Props, State> {
 
         return (
             // <Segment className="col-md-12">
-                <Segment className="card card-container" style={{ marginLeft: '38%', marginTop: '-50px' }}>
+                <Segment className="card card-container" style={{ marginLeft: '40.5%', marginTop: '-50px' }}>
                     <Formik
                         initialValues={initialValues}
                         validationSchema={this.validationSchema}
@@ -164,6 +164,11 @@ export default class CreateUser extends Component<Props, State> {
                                 )}
                                 <span>Submit</span>
                                 </Button>
+                                <Button
+                                    as={NavLink}
+                                    to='/'
+                                    content='Back'
+                                />
                             </Segment>
 
                             {message && (
@@ -175,11 +180,7 @@ export default class CreateUser extends Component<Props, State> {
                             )}
                         </Form>
                     </Formik>
-                    <Button
-                        as={NavLink}
-                        to='/'
-                        content='Back'
-                    />
+                    
                 </Segment>
             // </Segment>
         )

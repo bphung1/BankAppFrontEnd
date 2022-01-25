@@ -3,7 +3,7 @@ import { RouteComponentProps, NavLink } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import service from "../api/service";
-import { Button, Segment } from "semantic-ui-react";
+import { Button, Header, Icon, Segment } from "semantic-ui-react";
 import { history } from "..";
 
 interface RouterProps {
@@ -69,8 +69,12 @@ export default class Login extends Component<Props, State> {
     };
 
     return (
-      <Segment className="col-md-12">
-        <Segment className="card card-container">
+      <>
+        <Header textAlign="center" style={{ marginTop: '50px'}} as='h2' icon>
+            <Icon name='chess' />
+            Welcome to Bank
+        </Header>
+        <Segment className="card card-container" style={{ marginLeft: '40.5%', marginTop: '50px'}}>
 
           <Formik
             initialValues={initialValues}
@@ -79,7 +83,7 @@ export default class Login extends Component<Props, State> {
           >
             {({ handleSubmit, isSubmitting, errors }) => (
               <Form onSubmit={handleSubmit} >
-                <Segment className="form-group">
+                <Segment className="form-group" style={{ marginBottom: '-15px' }}>
                   <Field name="email" type="text" className="form-control" placeholder='email' />
                   <ErrorMessage
                     name="email"
@@ -88,7 +92,7 @@ export default class Login extends Component<Props, State> {
                   />
                 </Segment>
 
-                <Segment className="form-group">
+                <Segment className="form-group" style={{ marginBottom: '-15px' }}>
                   <Field name="password" type="password" className="form-control" placeholder='Password' />
                   <ErrorMessage
                     name="password"
@@ -97,7 +101,7 @@ export default class Login extends Component<Props, State> {
                   />
                 </Segment>
 
-                <Segment className="form-group">
+                <Segment className="form-group" style={{ marginBottom: '-15px' }}>
                   <Button type="submit" className="btn btn-primary btn-block" disabled={loading}>
                     {loading && (
                       <span className="spinner-border spinner-border-sm"></span>
@@ -124,7 +128,7 @@ export default class Login extends Component<Props, State> {
             />
           </Segment>
         </Segment>
-      </Segment>
+      </>
     );
   }
 }

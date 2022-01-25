@@ -17,20 +17,24 @@ export default function NavBar() {
                 <Menu inverted fixed="top">
                     <Container>
                         <Menu.Item as={NavLink} to='/profile' name="Profile">
-                            <img
+                            {/* <img
                                 src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
                                 alt="logo"
                                 style={{ marginRight: '10px' }}
-                            />
+                            /> */}
+                            <Icon name="chess king" />
                             Profile
                         </Menu.Item>
                         <Menu.Item as={NavLink} to='/checkingAccount' name="CheckingAccount">
+                            <Icon name="chess bishop" />
                             Checking Account
                         </Menu.Item>
                         <Menu.Item as={NavLink} to='/savingAccount' name="SavingAccount">
+                            <Icon name="chess queen" />
                             Savings Account
                         </Menu.Item>
                         <Menu.Item as={NavLink} to='/transfer' name="Transfer">
+                            <Icon name="chess knight" />
                             Transfer
                         </Menu.Item>
                         <Menu.Item>
@@ -41,8 +45,8 @@ export default function NavBar() {
             )
                 || 
                 (
-                    <Header style={{ marginLeft: '42%', marginTop: '30px', marginBottom: '-150px' }} as='h2' icon>
-                        <Icon name='chess' />
+                    <Header textAlign="center" style={{ marginTop: '50px'}} as='h2' icon>
+                        <Icon name='chess pawn' />
                         Create Account
                     </Header>
                 )
