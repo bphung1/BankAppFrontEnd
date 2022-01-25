@@ -103,8 +103,8 @@ export default class CreateUser extends Component<Props, State> {
                     >
                         <Form>
 
-                            <Segment className="form-group">
-                                <Field name="firstName" type="text" className="form-control" placeholder='First Name' />
+                            <Segment className="form-group" style={{ marginBottom: '-15px' }}>
+                                <Field name="firstName" type="text" className="form-control form-group" placeholder='First Name' />
                                 <ErrorMessage
                                     name="firstName"
                                     component="div"
@@ -112,7 +112,7 @@ export default class CreateUser extends Component<Props, State> {
                                 />
                             </Segment>
 
-                            <Segment className="form-group">
+                            <Segment className="form-group" style={{ marginBottom: '-15px' }} >
                                 <Field name="lastName" type="text" className="form-control" placeholder='Last Name' />
                                 <ErrorMessage
                                     name="lastName"
@@ -121,7 +121,7 @@ export default class CreateUser extends Component<Props, State> {
                                 />
                             </Segment>
 
-                            <Segment className="form-group">
+                            <Segment className="form-group" style={{ marginBottom: '-15px' }}>
                                 <Field name="email" type="text" className="form-control" placeholder='email' />
                                 <ErrorMessage
                                     name="email"
@@ -130,7 +130,7 @@ export default class CreateUser extends Component<Props, State> {
                                 />
                             </Segment>
 
-                            <Segment className="form-group">
+                            <Segment className="form-group" style={{ marginBottom: '-15px' }}>
                                 <Field name="phoneNumber" type="text" className="form-control" placeholder='Phone Number' />
                                 <ErrorMessage
                                     name="phoneNumber"
@@ -139,7 +139,7 @@ export default class CreateUser extends Component<Props, State> {
                                 />
                             </Segment>
 
-                            <Segment className="form-group">
+                            <Segment className="form-group" style={{ marginBottom: '-15px' }}>
                                 <Field name="address" type="text" className="form-control" placeholder='Address' />
                                 <ErrorMessage
                                     name="address"
@@ -148,7 +148,7 @@ export default class CreateUser extends Component<Props, State> {
                                 />
                             </Segment>
 
-                            <Segment className="form-group">
+                            <Segment className="form-group" style={{ marginBottom: '-15px' }}>
                                 <Field name="password" type="password" className="form-control" placeholder='Password' />
                                 <ErrorMessage
                                     name="password"
